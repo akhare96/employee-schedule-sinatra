@@ -1,0 +1,24 @@
+<h2> Welcome <%= current_user.name %>. Your business(es): </h2>
+
+<p>
+    <ol>
+        <% if current_user.businesses.empty? %>
+            <h4> You currently don't own any businesses </h4>
+        <% else %>
+            <% current_user.businesses.each do |business| %>
+                <li>
+                <%= business.name %>
+                <br>
+                <%= business.location %>
+                </li>
+            <% end %>
+        <% end %>
+    </ol>
+    <br><br>
+    <a href="/businesses/new"><button> Add a Business</button></a>
+    <% if !current_user.businesses.empty? %>
+        <a href="/employees/new"><button> Add an Employee</button></a>
+    <% end %>
+    <br><br><br><br>
+    <a href="/logout"><button> Logout </button> </a>
+</p>
