@@ -7,4 +7,12 @@ class BusinessesController < ApplicationController
             redirect '/login'
         end
     end
+
+    get '/businesses/new' do
+        if logged_in?
+            erb :'businesses/new'
+        else
+            redirect 'login'
+        end
+    end
 end
