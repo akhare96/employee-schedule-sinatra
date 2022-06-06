@@ -18,4 +18,12 @@ class UsersController < ApplicationController
         end
     end
 
+    get '/signup' do
+        if logged_in?
+            redirect '/businesses'
+        else
+            erb :'users/signup'
+        end
+    end
+
 end
