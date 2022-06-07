@@ -51,7 +51,7 @@ class BusinessesController < ApplicationController
         end
     end
 
-    patch 'businesses/:id' do
+    patch '/businesses/:id' do
         if logged_in?
             @business = Business.find_by_id(params[:id])
             if current_user.businesses.include?(@business)
@@ -69,5 +69,18 @@ class BusinessesController < ApplicationController
         end
     end
 
+    delete '/bussiness/:id/delete' do
+        if logged_in?
+            @business = Business.find_by_id(params[:id])
+            if current_user.businesses.include?(@business)
+                @business.delete
+                redirect '/businesses'
+            else
+                redirect "/businesses/:#{@business.id}"
+            end
+        else
+            redirect '/login'
+        end
+    end
 
 end
