@@ -6,4 +6,13 @@ class EmployeesController < ApplicationController
             redirect '/login'
         end
     end
+
+    get '/employees/new' do
+        if logged_in?
+            erb :'employees/new'
+        else
+            redirect 'login'
+        end
+    end
+
 end
