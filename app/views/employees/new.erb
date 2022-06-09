@@ -19,6 +19,15 @@
         <input type="text" id="schedule" name="schedule">
         <br><br><br>
 
+        <b>Place of work:</b>
+        <br><br>
+        <% Business.all.each do |business| %>
+            <label for="<%= business.name %>"><%= business.name %></label>
+            <input type="radio" name="business" id="<%= business.name %>" value="<%= business.id %>">
+            <br>
+        <% end %>
+        <br><br>
+
         <input type="submit" value="Save">
         
     </form>
