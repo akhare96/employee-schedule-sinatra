@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        @user = User.new(Name: params[:name], email: params[:email], password: params[:password])
+        @user = User.new(name: params[:name], email: params[:email], password: params[:password])
         if @user.save
             session[:id] = @user.id
             redirect '/businesses'

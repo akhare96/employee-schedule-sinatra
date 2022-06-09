@@ -20,7 +20,7 @@ class BusinessesController < ApplicationController
         if logged_in?
             @business = current_user.businesses.create(name: params[:name], email: params[:email])
             if @business.save
-                redirect "/businesses/:#{@business.id}"
+                redirect "/businesses/#{@business.id}"
             else
                 redirect '/businesses/new'
             end
@@ -55,11 +55,11 @@ class BusinessesController < ApplicationController
         if logged_in?
             @business = Business.find_by_id(params[:id])
             if current_user.businesses.include?(@business)
-                @business.update(name: params[:name], email: params [:email])
+                @business.update(name: params[:name], email: params[:email])
                 if @business.save
-                    redirect "/businesses/:#{@business.id}"
+                    redirect "/businesses/#{@business.id}"
                 else
-                    redirect "/businesses/:#{@business.id}/edit"
+                    redirect "/businesses/#{@business.id}/edit"
                 end
             else
                 redirect '/businesses'
@@ -76,7 +76,7 @@ class BusinessesController < ApplicationController
                 @business.delete
                 redirect '/businesses'
             else
-                redirect "/businesses/:#{@business.id}"
+                redirect "/businesses/#{@business.id}"
             end
         else
             redirect '/login'
