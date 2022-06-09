@@ -1,0 +1,17 @@
+<h2> Edit your business below </h2>
+
+<p>
+    <form action="/businesses/<%=@business.id%>" method="POST">
+        <input type="hidden" name="_method" value="PATCH">
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="<%=@business.name%>">
+
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" value="<%=@business.location%>">
+
+        <br><br>
+
+    <input type="submit" value="Save">
+    </form>
+</p>
