@@ -1,0 +1,18 @@
+<h2> Your Employee(s) </h2>
+
+<p>
+    <% if current_user.employees.empty? %>
+        <h4> "You currently do not have any employees" </h4>
+    <% else %>
+        <% current_user.employees.each do |employee| %>
+            <b>Name: </b><a href="/employees/<%=employee.id%>"><%= employee.name %></a>
+            <br>
+            <b>Address: </b><%= employee.address %>
+            <br>
+            <b>Phone Number: </b><%= employee.phone_number %>
+            <br>
+            <b>Works at: </b><%= employee.business.name %>
+            <br><br><br>
+        <% end %>
+    <% end %>
+</p>
