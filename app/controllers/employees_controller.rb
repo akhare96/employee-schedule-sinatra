@@ -17,13 +17,22 @@ class EmployeesController < ApplicationController
 
     post '/employees' do
         if logged_in?
-            @employee = Employee.create(name: params[:name], address: params[:address], phone_number: params[:phone_number], schedule: params[:schedule])
+            @business = Business.find_by_id(params[:business])
+            @employee = @business.employees.create(name: params[:name], address: params[:address], phone_number: params[:phone_number], schedule: params[:schedule])
             if @employee.save
-                @employee.business = params[:business]
                 redirect "/employees/#{@employee.id}"
             else
                 redirect '/employees/new'
             end
+        else
+            redirect '/login'
+        end
+    end
+
+    get '/employees/:id' do
+        if logged_in?
+            @employee = Employee.find_by_id(params[:id])
+            erb :'employees/show_employee'
         else
             redirect '/login'
         end
