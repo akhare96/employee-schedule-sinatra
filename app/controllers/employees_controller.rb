@@ -51,4 +51,23 @@ class EmployeesController < ApplicationController
         end
     end
 
+    patch '/employees/:id' do
+        if logged_in?
+            @employee = Employee.find_by_id(params[:id])
+            if current_user.employees.include?(@employee)
+                @employee.update(name: params[:name], address: params[:address], phone_number: params[:phone_number], schedule: params[:schedule])
+                @employee.business = params[:business]
+                if @employee.save
+                    redirect "/employees/#{@employee.id}"
+                else
+                    redirect "/employees/#{@employee.id}/edit"
+                end
+            else
+                redirect '/employees'
+            end
+        else
+            redirect '/login'
+        end
+    end
+
 end
