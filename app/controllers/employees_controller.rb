@@ -1,3 +1,4 @@
+require 'pry'
 class EmployeesController < ApplicationController
     get '/employees' do
         if logged_in?
@@ -56,7 +57,7 @@ class EmployeesController < ApplicationController
             @employee = Employee.find_by_id(params[:id])
             if current_user.employees.include?(@employee)
                 @employee.update(name: params[:name], address: params[:address], phone_number: params[:phone_number], schedule: params[:schedule])
-                @employee.business = params[:business]
+                @employee.business_id = params[:business]
                 if @employee.save
                     redirect "/employees/#{@employee.id}"
                 else
