@@ -70,4 +70,18 @@ class EmployeesController < ApplicationController
         end
     end
 
+    delete '/employees/:id/delete' do
+        if logged_in?
+            @employee = Employee.find_by_id(params[:id])
+            if current_user.employees.include?(@employee)
+                @employee.delete
+                redirect '/employees'
+            else
+                redirect "/employees/#{@employee.id}"
+            end
+        else
+            redirect '/login'
+        end
+    end
+
 end
