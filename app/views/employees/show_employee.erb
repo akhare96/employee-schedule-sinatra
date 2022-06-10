@@ -4,13 +4,22 @@
 
 
 <p>
-    Address: <%=@employee.address%>
+    <b>Address:</b> <%=@employee.address%>
     <br><br>
-    Phone Number: <%=@employee.phone_number%>
+    <b>Phone Number:</b> <%=@employee.phone_number%>
     <br><br>
-    Place of Work: <%=@employee.business.name%>
+    <b>Place of Work:</b> <%=@employee.business.name%>
     <br><br>
-    Schedule: <%@employee.schedule%>
+    <b>Schedule:</b> <%=@employee.schedule%>
+    <br><br>
+
+    <a href="/employees/<%=@employee.id%>/edit"><button>Edit Employee</button></a>
+    <form action="/employees/<%=@employee.id%>/delete" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete employee">
+    </form>
+    <br><br><a href="/employees"><button>Go to employees</button></a>
+    <br><br><a href="/businesses"><button>Go to businesses</button></a>
 
     <br><br><br><br><br><br>
     <a href="/logout"><button> Logout </button> </a>
