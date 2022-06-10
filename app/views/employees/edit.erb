@@ -1,0 +1,38 @@
+<h2> Edit Employee: </h2>
+
+<p>
+    <form action="/employees/<%=@employee.id%>" method="POST">
+        <input type="hidden" name="_method" value="PATCH">
+
+        <label for="name"> <b>Name</b> </label>
+        <input type="text" id="name" name="name" value="<%=@employee.name%>">
+        <br><br>
+
+        <label for="address"> <b>Address</b> </label>
+        <input type="text" id="address" name="address" value="<%=@employee.address%>">
+        <br><br>
+
+        <label for="phone_number"> <b>Phone Number</b> </label>
+        <input type="text" id="phone_number" name="phone_number" value="<%=@employee.phone_number%>">
+        <br><br>
+
+        <label for="schedule"> <b>Schedule</b> </label>
+        <input type="text" id="schedule" name="schedule" value="<%=@employee.schedule%>">
+        <br><br><br>
+
+        <b>Place of work:</b>
+        <br><br>
+        <% Business.all.each do |business| %>
+            <label for="<%= business.name %>"><%= business.name %></label>
+            <input type="radio" name="business" id="<%= business.name %>" value="<%= business.id %>" <%='checked' if @employee.business == business %>>
+            <br>
+        <% end %>
+        <br><br>
+
+        <input type="submit" value="Save">
+        
+    </form>
+    
+    <br><br><br><br>
+    <a href="/logout"><button> Logout </button> </a>
+</p>
