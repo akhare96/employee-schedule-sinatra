@@ -38,4 +38,17 @@ class EmployeesController < ApplicationController
         end
     end
 
+    get '/employees/:id/edit' do
+        if logged_in?
+            @employee = Employee.find_by_id(params[:id])
+            if current_user.employees.include?(@employee)
+                erb :'employees/edit'
+            else
+                redirect '/employees'
+            end
+        else
+            redirect '/login'
+        end
+    end
+
 end
