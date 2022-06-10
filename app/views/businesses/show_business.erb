@@ -10,7 +10,12 @@
     show employee schedule
 
     <br><br><a href="/businesses/<%=@business.id%>/edit"><button>Edit business</button></a>
-    <br><br><a href="/employees/new"><button>Add an Employee</button></a>
+    <form action="/businesses/<%=@business.id%>/delete" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete business">
+    </form>
+    <br><br><a href="/businesses"><button>Go to businesses</button></a>
+    <br><br><a href="/employees"><button>Go to employees</button></a>
 
     <br><br><br><br><br><br>
     <a href="/logout"><button> Logout </button> </a>
