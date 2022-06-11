@@ -4,11 +4,107 @@
         <%=@business.location%>
     </h5>
 </h2>
+<br><br>
+<p>
+<b> Employees at this location: </b><br><br>
+    <% @business.employees.each do |employee| %>
+        <a href="/employees/<%=employee.id%>"><%= employee.name %></a>
+        <br>
+    <% end %>
+</p>
 
+
+<table style="width:100%">
+  <tr>
+    <th>Weekday</th>
+    <th>Employee</th>
+  </tr>
+  <tr>
+    <td> Monday</td>
+    <td>
+    <% @business.employees.each do |employee| %>
+        <% if !employee.monday_sched.empty? %>
+            <%= "#{employee.name}: #{employee.monday_sched}" %>
+            <br><br>
+        <% end %>
+    <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td> Tuesday</td>
+    <td>
+    <% @business.employees.each do |employee| %>
+        <% if !employee.tuesday_sched.empty? %>
+            <%= "#{employee.name}: #{employee.tuesday_sched}" %>
+            <br><br>
+        <% end %>
+    <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td> Wednesday</td>
+    <td>
+    <% @business.employees.each do |employee| %>
+        <% if !employee.wednesday_sched.empty? %>
+            <%= "#{employee.name}: #{employee.wednesday_sched}" %>
+            <br><br>
+        <% end %>
+    <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td> Thursday</td>
+    <td>
+    <% @business.employees.each do |employee| %>
+        <% if !employee.thursday_sched.empty? %>
+            <%= "#{employee.name}: #{employee.thursday_sched}" %>
+            <br><br>
+        <% end %>
+    <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td> Friday</td>
+    <td>
+    <% @business.employees.each do |employee| %>
+        <% if !employee.friday_sched.empty? %>
+            <%= "#{employee.name}: #{employee.friday_sched}" %>
+            <br><br>
+        <% end %>
+    <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td> Saturday</td>
+    <td>
+    <% @business.employees.each do |employee| %>
+        <% if !employee.saturday_sched.empty? %>
+            <%= "#{employee.name}: #{employee.saturday_sched}" %>
+            <br><br>
+        <% end %>
+    <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td> Sunday</td>
+    <td>
+    <% @business.employees.each do |employee| %>
+        <% if !employee.sunday_sched.empty? %>
+            <%= "#{employee.name}: #{employee.sunday_sched}" %>
+            <br><br>
+        <% end %>
+    <% end %>
+    </td>
+  </tr>
+</table>
 
 <p>
-    show employee schedule
-
     <br><br><a href="/businesses/<%=@business.id%>/edit"><button>Edit business</button></a>
     <form action="/businesses/<%=@business.id%>/delete" method="POST">
         <input id="hidden" type="hidden" name="_method" value="DELETE">
