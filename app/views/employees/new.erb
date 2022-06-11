@@ -15,12 +15,37 @@
         <input type="text" id="phone_number" name="phone_number">
         <br><br>
 
-        Enter Employee Schedule <br>
-        <label for="schedule">Schedule</label>
-        <input type="text" id="scchedule" name="schedule">
-        <br>
+        <b>Enter Employee Schedule:</b> <br>
+        <small> (example: 9AM - 5PM) </small> <br><br>
+        <label for="monday_sched">Monday</label>
+        <input type="text" id="monday_sched" name="monday_sched">
+        <br><br>
 
-        <b>Place of work:</b>
+        <label for="tuesday_sched">Tuesday</label>
+        <input type="text" id="tuesday_sched" name="tuesday_sched">
+        <br><br>
+
+        <label for="wednesday_sched">Wednesday</label>
+        <input type="text" id="wednesday_sched" name="wednesday_sched">
+        <br><br>
+
+        <label for="thursday_sched">Thursday</label>
+        <input type="text" id="thursday_sched" name="thursday_sched">
+        <br><br>
+
+        <label for="friday_sched">Friday</label>
+        <input type="text" id="friday_sched" name="friday_sched">
+        <br><br>
+
+        <label for="saturday_sched">Saturday</label>
+        <input type="text" id="saturday_sched" name="saturday_sched">
+        <br><br>
+
+        <label for="sunday_sched">Sunday</label>
+        <input type="text" id="sunday_sched" name="sunday_sched">
+        <br><br>
+
+        <b>Place of Employment:</b>
         <br><br>
         <% Business.all.each do |business| %>
             <label for="<%= business.name %>"><%= business.name %></label>
