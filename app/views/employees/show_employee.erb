@@ -8,12 +8,22 @@
     <br><br>
     <b>Phone Number:</b> <%=@employee.phone_number%>
     <br><br>
-    <b>Place of Work:</b> <%=@employee.business.name%>
-    <br><br>
-    <b>Schedule:</b> <%=@employee.schedule%>
+    <b>Place of Employment:</b> <%=@employee.business.name%>
     <br><br>
 
-    <a href="/employees/<%=@employee.id%>/edit"><button>Edit Employee</button></a>
+    <h3><b>Schedule:</b></h3>
+    <br>
+
+    <b>Monday:</b> <%=@employee.monday_sched == "" ? "Off":@employee.monday_sched%><br><br>
+    <b>Tuesday:</b> <%=@employee.tuesday_sched == "" ? "Off":@employee.tuesday_sched%><br><br>
+    <b>Wednesday:</b> <%=@employee.wednesday_sched == "" ? "Off":@employee.wednesday_sched%><br><br>
+    <b>Thursday:</b> <%=@employee.thursday_sched == "" ? "Off":@employee.thursday_sched%><br><br>
+    <b>Friday:</b> <%=@employee.friday_sched == "" ? "Off":@employee.friday_sched%><br><br>
+    <b>Saturday:</b> <%=@employee.saturday_sched == "" ? "Off":@employee.saturday_sched%><br><br>
+    <b>Sunday:</b> <%=@employee.sunday_sched == "" ? "Off":@employee.sunday_sched%><br><br>
+    <br><br>
+
+    <a href="/employees/<%=@employee.id%>/edit"><button>Edit Employee</button></a><br><br>
     <form action="/employees/<%=@employee.id%>/delete" method="POST">
         <input id="hidden" type="hidden" name="_method" value="DELETE">
         <input type="submit" value="Delete employee">
