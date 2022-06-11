@@ -19,7 +19,14 @@ class EmployeesController < ApplicationController
     post '/employees' do
         if logged_in?
             @business = Business.find_by_id(params[:business])
-            @employee = @business.employees.create(name: params[:name], address: params[:address], phone_number: params[:phone_number], schedule: params[:schedule])
+            @employee = @business.employees.create(name: params[:name], address: params[:address], phone_number: params[:phone_number])
+            @employee.monday_sched = params[:monday_sched]
+            @employee.tuesday_sched = params[:tuesday_sched]
+            @employee.wednesday_sched = params[:wednesday_sched]
+            @employee.thursday_sched = params[:thursday_sched]
+            @employee.friday_sched = params[:friday_sched]
+            @employee.saturday_sched = params[:saturday_sched]
+            @employee.sunday_sched = params[:sunday_sched]
             if @employee.save
                 redirect "/employees/#{@employee.id}"
             else
