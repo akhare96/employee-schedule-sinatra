@@ -47,7 +47,7 @@
 
         <b>Place of Employment:</b>
         <br><br>
-        <% Business.all.each do |business| %>
+        <% current_user.businesses.all.each do |business| %>
             <label for="<%= business.name %>"><%= business.name %></label>
             <input type="radio" name="business" id="<%= business.name %>" value="<%= business.id %>">
             <br>
