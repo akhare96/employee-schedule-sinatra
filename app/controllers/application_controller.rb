@@ -15,6 +15,10 @@ class ApplicationController < Sinatra::Base
 
   helpers do
 
+    def permission_denied
+      halt 401, "You are not authorized to see this page!" unless current_user.businesses.include?(@business) || current_user.employees.include?(@employee)
+    end
+
     def logged_in?
       !!current_user
     end
