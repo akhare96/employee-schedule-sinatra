@@ -3,6 +3,7 @@
 <p>
     <% if current_user.businesses.empty? %>
         <h4> "You currently do not own any businesses" </h4>
+        <br>
     <% else %>
         <% current_user.businesses.each do |business| %>
             <b>Name: </b><a href="/businesses/<%=business.id%>"><%= business.name %></a>
