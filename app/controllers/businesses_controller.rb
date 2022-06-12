@@ -1,4 +1,6 @@
+require 'rack-flash'
 class BusinessesController < ApplicationController
+    use Rack::Flash
     get '/businesses' do
         @businesses = Business.all
         if logged_in?
@@ -20,6 +22,7 @@ class BusinessesController < ApplicationController
         if logged_in?
             @business = current_user.businesses.create(name: params[:name], location: params[:location])
             if @business.save
+                flash[:message] = "Successfulyy created business"
                 redirect "/businesses/#{@business.id}"
             else
                 redirect '/businesses/new'
@@ -32,6 +35,7 @@ class BusinessesController < ApplicationController
     get '/businesses/:id' do
         if logged_in?
             @business = Business.find_by_id(params[:id])
+            permission_denied
             erb :'businesses/show_business'
         else
             redirect '/login'

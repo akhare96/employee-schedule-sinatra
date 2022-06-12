@@ -1,5 +1,7 @@
+require 'rack-flash'
 require 'pry'
 class EmployeesController < ApplicationController
+    use Rack::Flash
     get '/employees' do
         if logged_in?
             erb :'employees/show'
@@ -28,6 +30,7 @@ class EmployeesController < ApplicationController
             @employee.saturday_sched = params[:saturday_sched]
             @employee.sunday_sched = params[:sunday_sched]
             if @employee.save
+                flash[:message] = "Successfulyy created employee"
                 redirect "/employees/#{@employee.id}"
             else
                 redirect '/employees/new'
@@ -40,6 +43,7 @@ class EmployeesController < ApplicationController
     get '/employees/:id' do
         if logged_in?
             @employee = Employee.find_by_id(params[:id])
+            permission_denied
             erb :'employees/show_employee'
         else
             redirect '/login'
@@ -63,7 +67,14 @@ class EmployeesController < ApplicationController
         if logged_in?
             @employee = Employee.find_by_id(params[:id])
             if current_user.employees.include?(@employee)
-                @employee.update(name: params[:name], address: params[:address], phone_number: params[:phone_number], schedule: params[:schedule])
+                @employee.update(name: params[:name], address: params[:address], phone_number: params[:phone_number])
+                @employee.monday_sched = params[:monday_sched]
+                @employee.tuesday_sched = params[:tuesday_sched]
+                @employee.wednesday_sched = params[:wednesday_sched]
+                @employee.thursday_sched = params[:thursday_sched]
+                @employee.friday_sched = params[:friday_sched]
+                @employee.saturday_sched = params[:saturday_sched]
+                @employee.sunday_sched = params[:sunday_sched]
                 @employee.business_id = params[:business]
                 if @employee.save
                     redirect "/employees/#{@employee.id}"
