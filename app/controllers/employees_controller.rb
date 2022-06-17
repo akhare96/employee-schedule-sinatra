@@ -30,7 +30,7 @@ class EmployeesController < ApplicationController
             @employee.saturday_sched = params[:saturday_sched]
             @employee.sunday_sched = params[:sunday_sched]
             if @employee.save
-                flash[:message] = "Successfulyy created employee"
+                flash[:message] = "Successfuly created employee"
                 redirect "/employees/#{@employee.id}"
             else
                 redirect '/employees/new'

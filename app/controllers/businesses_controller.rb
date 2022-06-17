@@ -22,7 +22,7 @@ class BusinessesController < ApplicationController
         if logged_in?
             @business = current_user.businesses.create(name: params[:name], location: params[:location])
             if @business.save
-                flash[:message] = "Successfulyy created business"
+                flash[:message] = "Successfuly created business"
                 redirect "/businesses/#{@business.id}"
             else
                 redirect '/businesses/new'

@@ -22,7 +22,7 @@
   </tr>
   <tr>
     <td> Monday</td>
-    <td>
+    <td><br>
     <% @business.employees.each do |employee| %>
         <% if !employee.monday_sched.empty? %>
             <%= "#{employee.name}: #{employee.monday_sched}" %>
@@ -34,7 +34,7 @@
 
   <tr>
     <td> Tuesday</td>
-    <td>
+    <td><br>
     <% @business.employees.each do |employee| %>
         <% if !employee.tuesday_sched.empty? %>
             <%= "#{employee.name}: #{employee.tuesday_sched}" %>
@@ -46,7 +46,7 @@
 
   <tr>
     <td> Wednesday</td>
-    <td>
+    <td><br>
     <% @business.employees.each do |employee| %>
         <% if !employee.wednesday_sched.empty? %>
             <%= "#{employee.name}: #{employee.wednesday_sched}" %>
@@ -58,7 +58,7 @@
 
   <tr>
     <td> Thursday</td>
-    <td>
+    <td><br>
     <% @business.employees.each do |employee| %>
         <% if !employee.thursday_sched.empty? %>
             <%= "#{employee.name}: #{employee.thursday_sched}" %>
@@ -70,7 +70,7 @@
 
   <tr>
     <td> Friday</td>
-    <td>
+    <td><br>
     <% @business.employees.each do |employee| %>
         <% if !employee.friday_sched.empty? %>
             <%= "#{employee.name}: #{employee.friday_sched}" %>
@@ -82,7 +82,7 @@
 
   <tr>
     <td> Saturday</td>
-    <td>
+    <td><br>
     <% @business.employees.each do |employee| %>
         <% if !employee.saturday_sched.empty? %>
             <%= "#{employee.name}: #{employee.saturday_sched}" %>
@@ -94,7 +94,7 @@
 
   <tr>
     <td> Sunday</td>
-    <td>
+    <td><br>
     <% @business.employees.each do |employee| %>
         <% if !employee.sunday_sched.empty? %>
             <%= "#{employee.name}: #{employee.sunday_sched}" %>
